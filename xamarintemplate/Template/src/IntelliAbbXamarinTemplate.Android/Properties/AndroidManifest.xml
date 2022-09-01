@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0.0" package="com.example.IntelliAbbXamarinTemplate">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<permission android:protectionLevel="signature" android:name="${applicationId}.permission.C2D_MESSAGE" />
+	<uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<application android:label="IntelliAbbXamarinTemplate" android:icon="@mipmap/icon" android:roundIcon="@mipmap/icon_round" android:theme="@style/MainTheme" android:networkSecurityConfig="@xml/network_config">
+		<uses-library android:name="org.apache.http.legacy" android:required="false" />
+	</application>
+</manifest>

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <PackageVersion>0.0.2-beta</PackageVersion>
+        <PackageId>IntelliAbb.Xamarin.Template</PackageId>
+        <Title>IntelliAbb Xamarin Template</Title>
+        <Authors>Hussain Abbasi</Authors>
+        <Description>Xamarin.Forms app tempelate with Prism, cache, network resiliency (Polly) and styles ready to accelerate your Xamarin.Forms application</Description>
+        <PackageIconUrl>https://intelliabbdotcom.files.wordpress.com/2022/08/image-1.png</PackageIconUrl>
+        <Summary>Xamarin.Forms app tempelate with Prism, cache, network resiliency (Polly) and styles ready to accelerate your Xamarin.Forms application</Summary>
+        <PackageTags>iOS Android</PackageTags>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Copyright>© $([System.DateTime]::Now.Year) intelliAbb</Copyright>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <DefaultLanguage>C#</DefaultLanguage>
+        <PackageProjectUrl>https://github.com/Intelliabb/xamarintemplate</PackageProjectUrl>
+        
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Content Include="Template\**\*" Exclude="Template\**\bin\**;Template\**\obj\**;" />
+        <Compile Remove="**\*" />
+    </ItemGroup>
+</Project>

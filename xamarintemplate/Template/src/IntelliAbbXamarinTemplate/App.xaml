@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    x:Class="IntelliAbbXamarinTemplate.App">
+    <Application.Resources>
+        <!--  Dimensions  -->
+        <Thickness x:Key="ContentPadding">20, 0</Thickness>
+        <Thickness x:Key="PagePadding">
+            <Thickness.Top>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="50"/>
+                    <On Platform="Android" Value="0"/>
+                </OnPlatform>
+            </Thickness.Top>
+        </Thickness>
+        <CornerRadius x:Key="GlobalCornerRadius">10</CornerRadius>
+
+        <!--  Colors  -->
+        <!-- Pallett -->
+        <Color x:Key="Primary">#00BBD6</Color>
+        <Color x:Key="Accent">#000000</Color>
+
+        <!-- Font Size -->
+        <x:Double x:Key="XXXXLarge">64</x:Double>
+        <x:Double x:Key="XXXLarge">48</x:Double>
+        <x:Double x:Key="XXLarge">36</x:Double>
+        <x:Double x:Key="XLarge">28</x:Double>
+        <x:Double x:Key="Large">22</x:Double>
+        <x:Double x:Key="Medium">20</x:Double>
+        <x:Double x:Key="Title">18</x:Double>
+        <x:Double x:Key="Headline">16</x:Double>
+        <x:Double x:Key="Body">14</x:Double>
+        <x:Double x:Key="Caption">12</x:Double>
+        <x:Double x:Key="Tiny">11</x:Double>
+
+        <!-- Fonts -->
+        <OnPlatform x:Key="FontSemibold" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="SFCompactText-Semibold" />
+            <On Platform="Android" Value=".SFCompactText-Semibold" />
+        </OnPlatform>
+
+        <OnPlatform x:Key="FontMedium" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="SFCompactText-Medium" />
+            <On Platform="Android" Value=".SFCompactText-Medium" />
+        </OnPlatform>
+
+        <OnPlatform x:Key="FontRegular" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="SFCompactText-Regular" />
+            <On Platform="Android" Value=".SFCompactText-Regular" />
+        </OnPlatform>
+    </Application.Resources>
+</prism:PrismApplication>

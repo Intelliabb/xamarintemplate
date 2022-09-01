@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <LangVersion>8</LangVersion>
+        <Nullable>warnings</Nullable>
+	    <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
+	    <Configurations>Test;Debug;Release</Configurations>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
+      <DebugType></DebugType>
+      <Optimize>false</Optimize>
+      <OutputPath>bin\Test</OutputPath>
+      <DefineConstants></DefineConstants>
+      <WarningLevel>4</WarningLevel>
+      <IntermediateOutputPath>obj\Test</IntermediateOutputPath>
+      <NoWarn></NoWarn>
+      <LangVersion>Default</LangVersion>
+      <NoStdLib>false</NoStdLib>
+      <Nullable></Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="nunit" Version="3.13.2" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+        <PackageReference Include="Moq" Version="4.16.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\IntelliAbbXamarinTemplate\IntelliAbbXamarinTemplate.csproj" />
+    </ItemGroup>
+</Project>
