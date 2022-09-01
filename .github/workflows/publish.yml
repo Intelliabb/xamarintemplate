@@ -7,8 +7,7 @@ on:
 env:
   IS_PREVIEW: 'true'
   VERSION_PREFIX: '0.0'
-  ${{ if IS_PREVIEW }}:
-    VERSION_SUFFIX: '-pre'
+  VERSION_SUFFIX: '-pre'
   VERSION: {{ VERSION_PREFIX }}.{{ github.GITHUB_RUN_NUMBER }}{{ VERSION_SUFFIX }}
 
 jobs:
