@@ -7,7 +7,7 @@ on:
 env:
   VERSION_PREFIX: '0.0'
   VERSION_SUFFIX: '-pre'
-  VERSION: ${{ VERSION_PREFIX }}.${{ github.GITHUB_RUN_NUMBER }}${{ VERSION_SUFFIX }}
+  VERSION: ${{ env.VERSION_PREFIX }}.${{ github.GITHUB_RUN_NUMBER }}${{ env.VERSION_SUFFIX }}
 
 jobs:
   build:
