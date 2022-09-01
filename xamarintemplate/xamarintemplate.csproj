@@ -16,24 +16,13 @@
         <DefaultLanguage>en-US</DefaultLanguage>
         <PackageProjectUrl>https://github.com/Intelliabb/xamarintemplate</PackageProjectUrl>
         <ProjectType>git</ProjectType>
-        <VersionPrefix>0.0.4</VersionPrefix>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionSuffix>$(VersionSuffix)</VersionSuffix>
         <Product>$(AssemblyName) ($(TargetFramework))</Product>
         
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
-    </PropertyGroup>
-
-    <!-- CI Helpers -->
-    <PropertyGroup>
-        <PackageOutputPath>$(MSBuildThisFileDirectory)/Artifacts</PackageOutputPath>
-        <PackageOutputPath Condition=" $(BUILD_ARTIFACTSTAGINGDIRECTORY) != '' ">$(BUILD_ARTIFACTSTAGINGDIRECTORY)</PackageOutputPath>
-        <IsPackable Condition=" $(ProjectName.Contains('Sample')) ">false</IsPackable>
-        <IsPackable Condition=" $(ProjectName.Contains('Test')) ">false</IsPackable>
-        <GeneratePackageOnBuild>$(IsPackable)</GeneratePackageOnBuild>
-        <IS_PREVIEW Condition=" $(IS_PREVIEW) == '' ">false</IS_PREVIEW>
-        <VersionPrefix Condition=" $(GITHUB_RUN_NUMBER) != '' ">$(VersionPrefix)$(GITHUB_RUN_NUMBER)</VersionPrefix>
-        <VersionSuffix Condition=" $(IS_PREVIEW) ">pre</VersionSuffix>
     </PropertyGroup>
     
     <ItemGroup>
