@@ -27,12 +27,12 @@ jobs:
     - name: Build
       run: dotnet build
     - name: Pack
-      run: dotnet pack -p:PackageVersion=0.0.4 --version-suffix "-pre" -o artifacts
+      run: dotnet pack -p:PackageVersion=0.0.{{ github.GITHUB_RUN_NUMBER }} --version-suffix "-pre" -o artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@v3.1.0
       with:
         name: package
-        path: artifacts
+        path: artifacts/
 
   publish:
     needs: build
@@ -44,5 +44,5 @@ jobs:
       with:
         name: package
 
-    - name: Publish
-      run: dotnet nuget push package --api-key {{ secrets.TEMPLATE_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    # - name: Publish
+    #   run: dotnet nuget push package --api-key {{ secrets.TEMPLATE_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
