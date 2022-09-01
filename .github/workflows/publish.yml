@@ -21,6 +21,22 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -o build
+      run: dotnet build --no-restore -o artifacts
+    - name: Upload artifacts
+      uses: actions/upload-artifacts@v3.1.0
+      with:
+        name: package
+        path: artifacts
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get artifacts
+      uses: actions/download-artifacts@v3.0.0
+      with:
+        name: package
+
     - name: Publish
-      run: dotnet nuget push build --api-key {{ secrets.TEMPLATE_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push package --api-key {{ secrets.TEMPLATE_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
