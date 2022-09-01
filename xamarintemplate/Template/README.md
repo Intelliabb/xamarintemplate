@@ -18,7 +18,7 @@ This is a starter template for an enterprise grade Xamarin application. The temp
     - Provides a lightweight and fast cache for in-memory and on-device need using SQLite3
 - Logger & Tracing Services
     - Logger service for dev logging, and Tracing service for AppCenter event logging
-- Push Notification Handling (REMOVED SINCE THIS PROJECT WILL USE AZURE NOTIFICATION HUB, PROBABLY)
+- Push Notification Handling (COMING SOON)
     - Provides the overrides for all the push notification lifecycle events to hand push and data notifications
 
 # REPLACE THE TEXT ABOVE WITH YOUR PROJECT RELATED INFORMATOIN SUCH AS:
