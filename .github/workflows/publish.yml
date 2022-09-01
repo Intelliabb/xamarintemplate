@@ -7,7 +7,7 @@ on:
 env:
   IS_PREVIEW: true
   VERSION_PREFIX: '0.0'
-  ${{ if env.IS_PREVIEW }}:
+  ${{ if IS_PREVIEW }}:
     VERSION_SUFFIX: '-pre'
   VERSION: {{ env.VERSION_PREFIX }}.{{ github.GITHUB_RUN_NUMBER }}{{ env.VERSION_SUFFIX }}
 
