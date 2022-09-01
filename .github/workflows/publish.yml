@@ -4,11 +4,12 @@ on:
   push:
     branches: [ "main" ]
 
-env:
-  IS_PREVIEW: 'true'
-  VERSION_PREFIX: '0.0'
-  VERSION_SUFFIX: '-pre'
-  VERSION: {{ VERSION_PREFIX }}.{{ github.GITHUB_RUN_NUMBER }}{{ VERSION_SUFFIX }}
+# env:
+#   IS_PREVIEW: 'true'
+#   VERSION_PREFIX: '0.0'
+#   ${{ if IS_PREVIEW }}:
+#     VERSION_SUFFIX: '-pre'
+  # VERSION: {{ VERSION_PREFIX }}.{{ github.GITHUB_RUN_NUMBER }}{{ VERSION_SUFFIX }}
 
 jobs:
   build:
@@ -26,7 +27,7 @@ jobs:
     - name: Build
       run: dotnet build
     - name: Pack
-      run: dotnet pack -p:PackageVersion={{ env.VERSION_PREFIX }} --version-suffix {{ env.VERSION_SUFFIX }} -o artifacts
+      run: dotnet pack -p:PackageVersion=0.0.4 --version-suffix "-pre" -o artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@v3.1.0
       with:
