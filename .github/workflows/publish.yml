@@ -24,14 +24,14 @@ jobs:
     - name: Build
       run: dotnet build
     - name: Pack
-      run: dotnet pack -p:PackageVersion=${{ env.VERSION_PREFIX }}.${{ github.run_number }}${{ env.VERSION_SUFFIX }} --version-suffix "${{ env.VERSION_SUFFIX }}" -o artifacts
+      run: dotnet pack -p:PackageVersion=${{ env.VERSION_PREFIX }}.${{ github.run_number }}${{ env.VERSION_SUFFIX }} --version-suffix "${{ env.VERSION_SUFFIX }}" -o output
     # - name: Publish
     #   run: dotnet nuget push artifacts/*.nupkg --api-key {{ secrets.TEMPLATE_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
     - name: Upload artifacts
       uses: actions/upload-artifact@v3.1.0
       with:
         name: package
-        path: artifacts/*.nupkg
+        path: output/*.nupkg
 
   publish:
     needs: build
@@ -41,7 +41,8 @@ jobs:
     - name: Get artifacts
       uses: actions/download-artifact@v3.0.0
       with:
-        name: package
+        name: package/*.nupkg
+        if-no-files-found: error
 
     - name: Publish
       run: dotnet nuget push package --api-key {{ secrets.TEMPLATE_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
