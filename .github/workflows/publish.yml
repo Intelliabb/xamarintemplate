@@ -30,7 +30,6 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: package
         path: output/*.nupkg
 
   publish:
@@ -41,7 +40,6 @@ jobs:
     - name: Get artifacts
       uses: actions/download-artifact@v3.0.0
       with:
-        name: package/*.nupkg
         if-no-files-found: error
 
     - name: Publish
