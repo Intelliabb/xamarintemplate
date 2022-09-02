@@ -43,4 +43,4 @@ jobs:
         if-no-files-found: error
 
     - name: Publish
-      run: dotnet nuget push artifact/*.nupkg --api-key {{ secrets.TEMPLATE_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push artifact/*.nupkg --api-key ${{ secrets.TEMPLATE_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
