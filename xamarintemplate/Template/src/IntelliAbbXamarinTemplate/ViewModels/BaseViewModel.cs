@@ -31,16 +31,30 @@ namespace IntelliAbbXamarinTemplate.ViewModels
         }
 
         private bool _isBusy;
+        /// <summary>
+        /// Can be used with the UI to binding loading when the app is busy
+        /// </summary>
         public bool IsBusy
         {
             get => _isBusy;
             set => SetProperty(ref _isBusy, value);
         }
 
+        private bool _canNavigate;
+        /// <summary>
+        /// Can be used to lock or unlock navigation while the app is busy
+        /// </summary>
+        public bool CanNavigate
+        {
+            get => _canNavigate;
+            set => SetProperty(ref _canNavigate, value);
+        }
+
         public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
 
         public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
+            // Track page visits
             if (parameters != null && parameters.GetNavigationMode() != NavigationMode.Back)
             {
                 TrackPageVisit();
@@ -117,17 +131,15 @@ namespace IntelliAbbXamarinTemplate.ViewModels
                     {
                         Xamarin.Essentials.MainThread.BeginInvokeOnMainThread(() =>
                         {
+                            // Handle offline mode. With an alert, toast, or a dedicated page
                             Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Offline", "You are offline", "OK");
-                            //NavigationService.NavigateAsync(nameof(ServiceInfoPage), new NavigationParameters { { AppConstants.MaintenanceMessageKey, (exception.InnerException ?? exception).Message } }, true, false);
                         });
                     }
-                    else if (!handleException)
+                    else if (!handleException && actionOnException != null)
                     {
-                        if (actionOnException == null)
-                            throw exception;
-
                         Xamarin.Essentials.MainThread.BeginInvokeOnMainThread(() => actionOnException.Invoke(exception, messageOnException));
-                    }
+                    } else
+                        throw exception;
                 }
             });
         }
@@ -154,7 +166,7 @@ namespace IntelliAbbXamarinTemplate.ViewModels
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"{(ex.InnerException ?? ex).Message}");
+                LoggerService.Error($"{(ex.InnerException ?? ex).Message}");
                 UpdateIsBusy(false);
                 return default(T);
             }
@@ -162,13 +174,11 @@ namespace IntelliAbbXamarinTemplate.ViewModels
 
         private void UpdateIsBusy(bool isBusy, bool? lockNavigation = null)
         {
-            IsBusy = isBusy;
-            //CanNavigate = lockNavigation.HasValue ? !lockNavigation.Value : !isBusy;
+            IsBusy = isBusy; 
+            CanNavigate = lockNavigation.HasValue ? !lockNavigation.Value : !isBusy;
         }
 
-        public virtual void Dispose()
-        {
-        }
+        public virtual void Dispose()  { }
         #endregion
     }
 }
