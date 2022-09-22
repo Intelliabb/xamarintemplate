@@ -30,14 +30,7 @@ namespace IntelliAbbXamarinTemplate.Services
 #else
             var client = new HttpClient(new ModernHttpClient.NativeMessageHandler());
 #endif
-            client.DefaultRequestHeaders.Add("User-Agent", "Space City Weather app (sci.writer@gmail.com)");
-            client.DefaultRequestHeaders.Add("Cache-Control", "max-age=0");
-            client.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
-            client.DefaultRequestHeaders.Add("Connection", "keep-alive");
-            client.DefaultRequestHeaders.Add("Accept", "application/geo+json");
-            client.DefaultRequestHeaders.Add("DNT", "1");
-            client.DefaultRequestHeaders.Add("Sec-GPC", "1");
-
+            client.DefaultRequestHeaders.Add("Accept", AppConstants.ContentTypeJson);
             return client;
         }
 
